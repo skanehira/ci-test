@@ -1,0 +1,18 @@
+name: Update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  udd:
+    runs-on: ubuntu-latest
+    # for using uud action
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: skanehira/actions/.github/actions/uud@main
+        with:
+          github_token: $GITHUB_TOKEN
