@@ -15,5 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: skanehira/actions/.github/actions/uud@main
+        id: uud
+      - uses: peter-evans/create-pull-request@v6
+        if: steps.uud.outputs.content != ''
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          title: ":package: Update Deno dependencies"
+          body: |
+            ```
+            ${{ steps.uud.outputs.content }}
+            ```
+          labels: automation
+          branch: automation/update-dependencies
