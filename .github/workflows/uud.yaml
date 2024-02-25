@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: skanehira/actions/.github/actions/uud@main
         with:
-          github_token: $GITHUB_TOKEN
+          github_token: ${{ secrets.GITHUB_TOKEN }}
